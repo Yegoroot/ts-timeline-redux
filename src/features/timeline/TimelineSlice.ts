@@ -31,12 +31,7 @@ export const getTimeline = createAsyncThunk(
 export const TimelineSlice = createSlice({
   name: "Timeline",
   initialState,
-  reducers: {
-    // someAction: (state) => {
-    //   // под капотом Immer библиотека и поэтому она не мутирует данные а образует новое состояние
-    //   state.status = 'failed';
-    // },
-  },
+  reducers: {},
 
   // обрабатываем thunk
   extraReducers: (builder) => {

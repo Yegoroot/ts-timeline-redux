@@ -1,25 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import moment from 'moment';
 
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { getTimeline, selectTimeline } from './TimelineSlice';
-import { Event, EventTypes } from '../../utils/axios';
+import { Event } from '../../utils/axios';
+import { getEventColor } from '../../utils/getEventColor'
 
 import styles from './Timeline.module.scss';
-
-
-const getEventColor = (type?: EventTypes) => {
-  switch (type) {
-    case EventTypes.NORMAL:
-      return '#4caf50'
-    case EventTypes.CRITICAL:
-      return '#e7d322'
-    case EventTypes.DANGEROUS:
-    return '#ee4949'
-    default:
-      return 'white'
-  }
-}
 
 
 export function Timeline() {
@@ -46,6 +33,17 @@ export function Timeline() {
       }
   }, [timelineEl]);
   
+  useEffect(() => {
+    function updateSize() {
+      if(timelineEl.current){
+        setWidth(timelineEl.current.offsetWidth)
+      }
+    }
+    window.addEventListener('resize', updateSize);
+    updateSize();
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+
 
   const getStyleEvent = (event: Event) => {
     // длина события (в миллисекундах)
@@ -67,7 +65,6 @@ export function Timeline() {
 
   return (
     <div  className={styles.root}>
-
       <div className={styles.timeline} >
         <ul ref={timelineEl}>
           {
