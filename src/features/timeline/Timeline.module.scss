@@ -1,10 +1,36 @@
 .root {
   width: 100%;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .timeline {
   width: 100%;
-  background: #9fb9d7;
-  height: 20px;
+  background: #3c4d63;
+  height: 30px;
+  padding: 5px;
+  border-radius: 10px;
+  ul {
+    width: 100%;
+    background: #1e262d;
+    margin: 0px;
+    height: 20px;
+    padding: 0px;
+    position: relative;
+    border-radius: 5px;
+  }
+
+  li {
+    border-radius: 2px;
+    height: 20px;
+    position: absolute;
+    left: 0px;
+  }
+}
+
+.meta {
+  text-align: initial;
+  padding-top: 40px;
 }

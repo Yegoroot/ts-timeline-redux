@@ -16,7 +16,7 @@ const initialState: TimelineState = {
       dateStart: "",
     },
   },
-  status: "responsed",
+  status: "loading",
 };
 
 // Обработка происходит в axios interception
