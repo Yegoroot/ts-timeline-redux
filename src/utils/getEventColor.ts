@@ -1,4 +1,4 @@
-import { EventTypes } from "./axios";
+import { EventTypes } from "../features/timeline/TimelineData";
 
 export const getEventColor = (type?: EventTypes) => {
   switch (type) {

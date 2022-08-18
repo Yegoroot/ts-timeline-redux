@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "../../utils/axios";
 import { RootState } from "../../app/store";
-import { Data } from "../../utils/axios";
+import { Data, data } from "./TimelineData";
 
 export interface TimelineState {
   data: Data;
@@ -19,13 +19,14 @@ const initialState: TimelineState = {
   status: "loading",
 };
 
-// Обработка происходит в axios interception
+// Данные получаем таким образом (такое было условие в задаче)
 export const getTimeline = createAsyncThunk(
   "Timeline/fetchEvents",
-  async () => {
-    const response = await axios.get("/events").then((res) => res);
-    return response.data;
-  }
+  async () =>
+    await axios
+      .get("//anyurl.com/events")
+      .then((res) => res.data)
+      .catch((err) => data)
 );
 
 export const TimelineSlice = createSlice({

@@ -3,7 +3,7 @@ import moment from 'moment';
 
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { getTimeline, selectTimeline } from './TimelineSlice';
-import { Event } from '../../utils/axios';
+import { Event } from './TimelineData';
 import { getEventColor } from '../../utils/getEventColor'
 
 import styles from './Timeline.module.scss';
@@ -54,7 +54,6 @@ export function Timeline() {
     const time =  moment.duration(moment(event.dateStart).diff(timelineStart)).asMilliseconds()
     const leftPx = Math.round(time / timePerPx);
 
-    console.log( leftPx,eventWidth )
     return {
       width: `${eventWidth}px`,
       background: getEventColor(event.type),
