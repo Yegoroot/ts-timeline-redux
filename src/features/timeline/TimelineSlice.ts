@@ -20,7 +20,7 @@ const initialState: TimelineState = {
 };
 
 // Данные получаем таким образом (такое было условие в задаче)
-export const getTimeline = createAsyncThunk(
+export const getTimelineData = createAsyncThunk(
   "Timeline/fetchEvents",
   async () =>
     await axios
@@ -37,10 +37,10 @@ export const TimelineSlice = createSlice({
   // обрабатываем thunk
   extraReducers: (builder) => {
     builder
-      .addCase(getTimeline.pending, (state) => {
+      .addCase(getTimelineData.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(getTimeline.fulfilled, (state, action) => {
+      .addCase(getTimelineData.fulfilled, (state, action) => {
         state.status = "responsed";
         state.data = action.payload;
       });
