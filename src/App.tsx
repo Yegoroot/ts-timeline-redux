@@ -1,13 +1,30 @@
-import { Timeline } from './features/timeline/Timeline';
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
+import { Home, History } from "./pages";
+
 import './App.scss';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <Timeline />
-      </header>
-    </div>
+    <Router>
+      <nav className='nav'>
+        <ul >
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/history">History</Link>
+          </li>
+        </ul>
+      </nav>
+  
+      <Routes>
+        <Route path="/history" element={<History/>}/>
+        <Route path="/" element={<Home/>} />
+      </Routes>
+
+    </Router>
   );
 }
 

@@ -1,0 +1,1 @@
+export const Nav = () => <div>nav here</div>
